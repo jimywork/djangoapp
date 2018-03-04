@@ -1,0 +1,15 @@
+{% if contacts %}
+    <ul>
+    {% for contact in contacts %}
+        <li>Nome: <a href="{% url 'detail' contact.id %}">{{ contact.name_contact }}</a></li>
+        <li>Endereço: <a href="{% url 'detail' contact.id %}">{{ contact.address_contact}}</a></li>
+        <li>E-mail: <a href="{% url 'detail' contact.id %}">{{ contact.email_contact}}</a></li>
+        <li>Telefone: <a href="{% url 'detail' contact.id %}">{{ contact.phone_contact}}</a></li>
+        <li>Employment: <a href="{% url 'detail' contact.id %}">{{ contact.org_contact}}</a></li>
+        <li>Sobre: <a href="{% url 'detail' contact.id %}">{{ contact.text_contact}}</a></li>
+        <li>Join in: <a href="{% url 'detail' contact.id %}">{{ contact.date_contact}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
