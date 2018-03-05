@@ -13,11 +13,7 @@ def index (request) :
 
 	contacts = Contato.objects.all()
 
-	context = {
-		'contacts': contacts,
-	}
-
-	return render(request, 'polls/index.html', context)
+	return render(request, 'polls/contacts.html', {'contacts': contacts, })
 
 def detail (request, contact_id ) :
 
@@ -25,7 +21,6 @@ def detail (request, contact_id ) :
 		contact = Contato.objects.get(pk=contact_id)
 	except Contato.DoesNotExist:
 		raise Http404("Question does not exist")
-
 
 	contacts = Contato.objects.filter(id=contact_id)
 

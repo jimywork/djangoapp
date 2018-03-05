@@ -1,15 +1,42 @@
-{% if contacts %}
-    <ul>
-    {% for contact in contacts %}
-        <li>Nome: <a href="{% url 'detail' contact.id %}">{{ contact.name_contact }}</a></li>
-        <li>Endereço: <a href="{% url 'detail' contact.id %}">{{ contact.address_contact}}</a></li>
-        <li>E-mail: <a href="{% url 'detail' contact.id %}">{{ contact.email_contact}}</a></li>
-        <li>Telefone: <a href="{% url 'detail' contact.id %}">{{ contact.phone_contact}}</a></li>
-        <li>Employment: <a href="{% url 'detail' contact.id %}">{{ contact.org_contact}}</a></li>
-        <li>Sobre: <a href="{% url 'detail' contact.id %}">{{ contact.text_contact}}</a></li>
-        <li>Join in: <a href="{% url 'detail' contact.id %}">{{ contact.date_contact}}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% extends "base.html" %}
+
+
+{% block action %}  {% endblock %}
+
+{% block action_icon %} <i class="far fa-edit editJust"></i> {% endblock %}
+
+{% block logo %} <li class="title"><a href="/contatos"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{""| upper}}</a></li> {% endblock %}
+
+{% block content %}
+
+    <main class="main contacts">
+        <section class="search-contacts">
+            <div class="form-search">
+                <form action="" method="get" autocomplete="on">
+                    <div class="input-group add-on">
+                        <input class="form-control search-contacts" type="search" name="s" placeholder="Pesquisar">
+                        <div class="input-group-btn">
+                            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="perfils">
+            <div class="section title">
+                <span>{{"contatos" | capfirst}}</span>
+            </div>
+            {% if contacts %}
+                {% for contact in contacts %}
+                    <a href="/contatos/{{contact.id}}">
+                    <ul class="section content">
+                        <li>
+                            <img class="rounded" src="https://randomuser.me/api/portraits/men/{{contact.id}}.jpg" alt="Smiley face" width="42" height="42"> <span class="title-contact">{{contact.name_contact}}</span></p>
+                        </li>
+                    </ul>
+                </a>
+                {% endfor %}
+            {% endif %}
+        </section>
+    </main>
+{%endblock%}

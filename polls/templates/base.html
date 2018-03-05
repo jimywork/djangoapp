@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>{% block title %} Contatos {% endblock %}</title>
+
+	{% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat:400,500|Roboto" rel="stylesheet">
+
+</head>
+<body>
+
+	<div class="main">
+		<header>
+		<div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow primary-menu">
+			<ul>
+				{% block logo %}<li class="title"><a href="/contatos">{{"django"| upper}}</a></li>{% endblock %}
+				<ul class="actions">
+					<li class="button_actions"><a href="#">{% block action %} Contatos {% endblock %}</a></li>
+					<li class="button_actions"><a href="#">{% block action_icon %}<i class="fas fa-user-plus"></i>{% endblock %}</a></li>
+				</ul>
+			</ul>
+		</div>
+	</header>
+		{% block content %} {% endblock %}
+	</div>
+
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block action %} GROUPS {% endblock %}
+
+
+{% block content %}
+
+    <main class="main contacts">
+    	<section class="search-contacts">
+    		<div class="form-search">
+    			<form action="" method="get" autocomplete="on">
+    				<div class="input-group add-on">
+    					<input class="form-control search-contacts" type="search" name="s" placeholder="Pesquisar">
+    					<div class="input-group-btn">
+    						<button class="btn" type="submit"><i class="fas fa-search"></i></button>
+    					</div>
+    				</div>
+    			</form>
+    		</div>
+    	</section>
+    	<section class="perfils">
+    		<div class="section title">
+    			<span>{{"contatos" | capfirst}}</span>
+    		</div>
+    		{% if contacts %}
+    			{% for contact in contacts %}
+    				<a href="/contatos/{{contact.id}}">
+	    			<ul class="section content">
+	    				<li>
+	    					<img class="rounded" src="https://randomuser.me/api/portraits/men/{{contact.id}}.jpg" alt="Smiley face" width="42" height="42"> <span class="title-contact">{{contact.name_contact}}</span></p>
+	    				</li>
+	    			</ul>
+    			</a>
+    			{% endfor %}
+    		{% endif %}
+    	</section>
+    </main>
+{%endblock%}
