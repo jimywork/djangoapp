@@ -124,3 +124,40 @@ input:focus .form-search > form > .input-group.add-on > .input-group-btn > butto
 .editJust {
 	font-size: 16px;
 }
+
+.contact {
+	display: block !important;
+}
+.contact.details > li {
+	display: block !important;
+}
+
+.contact_type {
+	font-size: 10px !important;
+}
+
+p, span, address, strong {
+	line-height: normal;
+}
+.description-title {
+    position: relative;
+    left: 56px;
+    top: -12px;
+    white-space: pre-wrap;
+    display: block;
+    width: 88%;
+}
+.address_c {
+	line-height: normal;
+	margin-left: 55px;
+}
+
+.notfound {
+	padding: 0px 30px 0px 30px;
+	margin-top: 25%;
+	    color: #eaeaea;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+}

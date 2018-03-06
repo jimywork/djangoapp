@@ -5,14 +5,14 @@
 
 {% block action_icon %} <i class="far fa-edit editJust"></i> {% endblock %}
 
-{% block logo %} <li class="title"><a href="/contatos"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{""| upper}}</a></li> {% endblock %}
+{% block logo %} <li class="title"><a href="/"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{""| upper}}</a></li> {% endblock %}
 
 {% block content %}
 
     <main class="main contacts">
         <section class="search-contacts">
             <div class="form-search">
-                <form action="" method="get" autocomplete="on">
+                <form action="/" method="get" autocomplete="on">
                     <div class="input-group add-on">
                         <input class="form-control search-contacts" type="search" name="s" placeholder="Pesquisar">
                         <div class="input-group-btn">
@@ -28,10 +28,22 @@
             </div>
             {% if contacts %}
                 {% for contact in contacts %}
-                    <a href="/contatos/{{contact.id}}">
+                    <a href="/{{contact.id}}">
                     <ul class="section content">
                         <li>
-                            <img class="rounded" src="https://randomuser.me/api/portraits/men/{{contact.id}}.jpg" alt="Smiley face" width="42" height="42"> <span class="title-contact">{{contact.name_contact}}</span></p>
+                            <img class="rounded" src="https://randomuser.me/api/portraits/men/{{contact.id}}.jpg" alt="Smiley face" width="42" height="42"> <span class="title-contact">{{contact.name_contact}} <small class="contact_type">{{contact.org_contact}}</small></span><br>
+                            <span class="description-title">{{contact.text_contact}} <small><i class="far fa-clock"></i> add at {{contact.date_contact}}</small></span>
+
+                            <address class="address_c">
+                             <strong>Address</strong><br>
+                              {{contact.address_contact}}<br>
+                              <abbr title="Phone">{{"phone"|upper}}:</abbr> {{contact.phone_contact}}
+                            </address>
+
+                            <address class="address_c">
+                              <strong>E-mail Address</strong><br>
+                              <a href="mailto:#">{{contact.email_contact}}</a>
+                            </address>
                         </li>
                     </ul>
                 </a>
