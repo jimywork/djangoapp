@@ -1,4 +1,4 @@
-from django.shortcuts import Http404, render
+from django.shortcuts import Http404, render, redirect
 
 # Create your views here.
 
@@ -12,7 +12,7 @@ from .models import Contato
 def index (request) :
 
 	contacts = Contato.objects.all()
-
+	
 	return render(request, 'polls/contacts.html', {'contacts': contacts, })
 
 def detail (request, contact_id ) :
@@ -20,11 +20,9 @@ def detail (request, contact_id ) :
 	try:
 		contact = Contato.objects.get(pk=contact_id)
 	except Contato.DoesNotExist:
-		raise Http404("Question does not exist")
+		return render(request, 'polls/404.html', {'message': "O contato %d não foi encontrado" % (contact_id) })
 
-	contacts = Contato.objects.filter(id=contact_id)
-
-	return render(request, 'polls/details.html', {'contacts': contacts })
+	return render(request, 'polls/details.html', {'contacts': Contato.objects.filter(id=contact_id) })
 
 def search (request) :
 
@@ -33,6 +31,9 @@ def search (request) :
 	contact = Contato.objects.filter(name_contact__icontains=query.upper())
 
 	if len(contact) <= 0:
-		return render(request, 'polls/404.html', {'contacts': query })
+		return render(request, 'polls/404.html', {'message': "O resultado da pesquisa para %s não foi encontrado" % (query) })
+	if not query :
+		# return render(request, 'polls/404.html', {'contacts': query })
+		  return redirect("/")
 
 	return render(request, 'polls/contacts.html', {'contacts': contact })
